@@ -1,0 +1,49 @@
+/* components */
+
+/* formato para las paginas
+
+[role="page"] {
+	background-color: #FFFFFF;
+	height: 100%;
+	overflow: hidden;
+	visibility: hidden;
+	position: absolute;
+	width: 100%;
+}
+
+.current-page {
+	visibility: visible;
+	z-index: 1;
+} */
+
+nav > * {
+	display: inline-block;
+	position: fixed;
+	background-color: #FFFFFF;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.side-button {
+	width: 8em;
+	height: 7.5em;
+}
+
+.bot-button {
+	width: 15em;
+	height: 3em;
+	bottom: 0em;
+	margin-left: calc((100% - 15em) / 2 );
+}
+
+.side-button.left{
+	text-align: right;
+	left: 0em;
+}
+
+.side-button.right{
+	text-align: left;
+	right: 0em;
+}

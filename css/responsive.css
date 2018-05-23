@@ -1,0 +1,43 @@
+/* responsive */
+
+.hidden {
+    display: none !important;
+}
+
+@media screen and (max-width: 900px) { 
+
+    .gutter {
+        display: none;
+    }
+
+    #pen {
+        margin: 0;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) { 
+
+    nav {
+        height: fit-content;
+    }
+
+    .bot-button, .side-button {
+        display: inline-block;
+        position: relative;
+        text-align: center !important;
+    }
+
+    .side-button {
+        width: 15em;
+        height: 3em;
+        margin-left: calc((100% - 15em) / 2 );
+    }
+}
+
+@media screen and (min-width: 1200px) { 
+
+    .side-button{
+        width: 10%;
+    }
+}

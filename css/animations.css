@@ -1,0 +1,165 @@
+/* animaciones izquierda, derecha, arriba, abajo */
+
+.slide-to-left {
+	-webkit-animation: slide-to-left 0.5s ease both;
+	animation: slide-to-left 0.5s ease both;
+}
+
+.slide-to-right {
+	-webkit-animation: slide-to-right 0.5s ease both;
+	animation: slide-to-right 0.5s ease both;
+}
+
+.slide-from-left {
+	-webkit-animation: slide-from-left 0.5s ease both;
+	animation: slide-from-left 0.5s ease both;	
+}
+
+.slide-from-right {
+	-webkit-animation: slide-from-right 0.5s ease both;
+	animation: slide-from-right 0.5s ease both;	
+}
+
+.slide-to-top {
+	-webkit-animation: slide-to-top 0.5s ease both;
+	animation: slide-to-top 0.5s ease both;
+}
+
+.slide-to-bottom {
+	-webkit-animation: slide-to-bottom 0.5s ease both;
+	animation: slide-to-bottom 0.5s ease both;
+}
+
+.slide-from-top {
+	-webkit-animation: slide-from-top 0.5s ease both;
+	animation: slide-from-top 0.5s ease both;
+}
+
+.slide-from-bottom {
+	-webkit-animation: slide-from-bottom 0.5s ease both;
+	animation: slide-from-bottom 0.5s ease both;
+}
+
+/* animacion hacia la izquierda */
+
+@-webkit-keyframes slide-to-left {
+	to { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes slide-to-left {
+	to { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}
+
+/* animacion hacia la derecha */
+
+@-webkit-keyframes slide-to-right {
+	to { -webkit-transform: translateX(100%); }
+}
+
+@keyframes slide-to-right {
+	to { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+
+/* animacion desde la izquierda */
+
+@-webkit-keyframes slide-from-left {
+	from { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes slide-from-left {
+	from { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}
+
+/* animacion desde la derecha */
+
+@-webkit-keyframes slide-from-right {
+	from { -webkit-transform: translateX(100%); }
+}
+
+@keyframes slide-from-right {
+	from { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+
+/* animacion hacia arriba */
+
+@-webkit-keyframes slide-to-top {
+	to { -webkit-transform: translateY(-100%); }
+}
+
+@keyframes slide-to-top {
+	to { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+
+/* animacion hacia abajo */
+
+@-webkit-keyframes slide-to-bottom {
+	to { -webkit-transform: translateY(100%); }
+}
+
+@keyframes slide-to-bottom {
+	to { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
+
+/* animacion desde arriba */
+
+@-webkit-keyframes slide-from-top {
+	from { -webkit-transform: translateY(-100%); }
+}
+
+@keyframes slide-from-top {
+	from { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+
+/* animacion desde abajo */
+
+@-webkit-keyframes slide-from-bottom {
+	from { -webkit-transform: translateY(100%); }
+}
+
+@keyframes slide-from-bottom {
+	from { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
+
+/* animaciones con retraso */
+
+.slide-to-left-easing {
+	-webkit-animation: slide-to-left 0.5s ease-in both;
+	animation: slide-to-left 0.5s ease-in both;
+	z-index: 2;
+}
+
+.slide-to-right-easing {
+	-webkit-animation: slide-to-right 0.5s ease-in both;
+	animation: slide-to-right 0.5s ease-in both;
+	z-index: 2;
+}
+
+.slide-to-top-easing {
+	-webkit-animation: slide-to-top 0.5s ease-in both;
+	animation: slide-to-top 0.5s ease-in both;
+	z-index: 2;
+}
+
+.slide-to-bottom-easing {
+	-webkit-animation: slide-to-bottom 0.5s ease-in both;
+	animation: slide-to-bottom 0.5s ease-in both;
+	z-index: 2;
+}
+
+/* animacion con desvanecimiento */
+
+.slide-to-fade {
+	-webkit-animation: fade 0.5s ease both;
+	animation: fade 0.5s ease both;
+	z-index: 0;
+}
+
+/* desvanecimiento */
+
+@-webkit-keyframes fade {
+	to { opacity: 0.5; }
+}
+
+@keyframes fade {
+	to { opacity: 0.5; }
+}

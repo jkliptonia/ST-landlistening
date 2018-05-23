@@ -1,0 +1,64 @@
+/* reset */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	background-color: #ffffff;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    min-width: 320px;
+}
+
+/* typography */
+
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Playfair Display', serif;
+font-family: 'Zilla Slab', serif; */
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #828282;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 20%;
+    line-height: 1.4em;
+    margin: .9em;
+}
+
+/* scaffold */
+
+nav {
+    width: 100%;
+    height: calc(50% + 5em);
+    position: fixed;
+    bottom: 0px;
+    z-index: 5;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.gutter {
+    flex: 1 0 auto;
+    width: 2em;
+}
+
+#pen {
+    flex: 0 0 auto;
+    width: 85%;
+    background-image: url('../images/mountain.png');
+    background-size: cover;
+    margin-top: 2em;
+}
+
+
+
