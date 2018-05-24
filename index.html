@@ -14,22 +14,18 @@
 <body>
 	<nav>
 		<div class="menu bot-button hidden" aria-label="Mobile Menu"> <h2> Menu </h2></div>
-		<div class="nav side-button left" aria-label="About Sarah">
-			 <h2> About Sarah </h2>
-		</div>
-		<div class="nav side-button right" aria-label="Past Work"><h2> Past Work </h2></div>
-		<div class="nav bot-button" aria-label="Contact"><h2> Contact </h2></div>
+		<div id="top-nav" class="nav bot-button" aria-label="Contact"><h2> Top Nav </h2></div>
+		<div id="left-nav" class="nav side-button" aria-label="About Sarah"><h2> Left Nav </h2></div>
+		<div id="right-nav" class="nav side-button" aria-label="Past Work"><h2>Right Nav</h2></div>
+		<div id="bot-nav" class="nav bot-button" aria-label="Contact"><h2> Bot Nav </h2></div>
+		<div id="current-page" class="hidden">Landlistening</div>
 	</nav>
 	<main>
-		<div id="left" class="gutter"></section>
+		<div id="left" class="gutter"></div>
 		<section id="pen">
 
 			<section id="landlistening" role="page" class="current-page">
 				 Landlistening 
-				 <button role="transition" class="to-about"
-					data-to="page-2" 
-					data-transition="horizontal">
-		 		</button>
 			</section>
 			<section id="about" role="page" class="hidden"> About </section>
 			<section id="examples" role="page" class="hidden"> Examples </section>
@@ -73,7 +69,8 @@
 	<script type="text/javascript">
 		window.module = {};
 	</script>
-	<script src="js/mobile.js" type="text/javascript"></script>
+	<script src="js/pageView.js" type="text/javascript"></script>
+	<script src="js/mobileView.js" type="text/javascript"></script>
 	<script src="js/app.js" type="text/javascript"></script>
 </body>
 </html>

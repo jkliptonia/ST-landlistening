@@ -14,14 +14,16 @@
     const hamburgerize = () => {
         $('.nav').hide();
         $('.menu').removeClass('hidden');
+
         $('.menu').off().on('click', function() {
-            $('.nav').slideToggle();
+            $('.nav').slideToggle(1000);
         });
     };
 
     const deHamburgerize = () => {
         if (!$('.menu').hasClass('hidden')) $('.menu').addClass('hidden');
         $('.nav').show();
+
         $('.menu').off();
     };
 

@@ -26,24 +26,45 @@ nav > * {
 	align-items: center;
 }
 
+nav * h2 {
+	cursor: pointer;
+}
+
 .side-button {
 	width: 8em;
 	height: 7.5em;
 }
 
-.bot-button {
+.bot-button{
 	width: 15em;
 	height: 3em;
-	bottom: 0em;
 	margin-left: calc((100% - 15em) / 2 );
 }
 
-.side-button.left{
+#bot-nav {
+	bottom: 0em;
+}
+
+#top-nav {
+	top: 0em;
+}
+
+#left-nav{
 	text-align: right;
 	left: 0em;
 }
 
-.side-button.right{
+#right-nav{
 	text-align: left;
 	right: 0em;
+}
+
+[role="page"] {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background-image: url('../images/mountain.png');
+    background-size: cover;
 }
