@@ -13,11 +13,15 @@
 </head>
 <body>
 	<nav>
+		<!-- Notes: Menu is hidden on desktop view, 
+		links set for "Landing Page" and dynamically changed in pageView.js on navigation.  
+		If updating, please leave set for "Landing Page" and set "Target" attribute to 
+		the EXACT id of the destination section as seen in the "main" portion of the HTML. -->
 		<div class="menu bot-button hidden" aria-label="Mobile Menu"> <h2> Menu </h2></div>
-		<div id="top-nav" class="nav bot-button" aria-label="Contact"><h2> Top Nav </h2></div>
-		<div id="left-nav" class="nav side-button" aria-label="About Sarah"><h2> Left Nav </h2></div>
-		<div id="right-nav" class="nav side-button" aria-label="Past Work"><h2>Right Nav</h2></div>
-		<div id="bot-nav" class="nav bot-button" aria-label="Contact"><h2> Bot Nav </h2></div>
+		<div id="top-nav" class="nav bot-button" target="setme" aria-label="Contact"><h2> Top Nav </h2></div>
+		<div id="left-nav" class="nav side-button" target="setme" aria-label="About Sarah"><h2> Left Nav </h2></div>
+		<div id="right-nav" class="nav side-button" target="setme" aria-label="Past Work"><h2>Right Nav</h2></div>
+		<div id="bot-nav" class="nav bot-button" target="setme" aria-label="Contact" ><h2> Bot Nav </h2></div>
 		<div id="current-page" class="hidden">Landlistening</div>
 	</nav>
 	<main>
