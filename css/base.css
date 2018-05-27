@@ -14,6 +14,10 @@ html, body {
     min-width: 320px;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* typography */
 
 /* font-family: 'Montserrat', sans-serif;
@@ -26,9 +30,13 @@ h2 {
     font-size: 1.1em;
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 20%;
+    letter-spacing: .11em;
     line-height: 1.4em;
     margin: .9em;
+}
+
+h2:hover {
+	color: #D2BBA0;
 }
 
 /* scaffold */
@@ -55,8 +63,7 @@ main {
 #pen {
     flex: 0 0 auto;
     width: 85%;
-    background-image: url('../images/mountain.png');
-    background-size: cover;
+    height: 100%;
     margin-top: 2em;
 }
 

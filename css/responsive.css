@@ -1,9 +1,4 @@
 /* responsive */
-
-.hidden {
-    display: none !important;
-}
-
 @media screen and (max-width: 900px) { 
 
     .gutter {
