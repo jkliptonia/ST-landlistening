@@ -10,9 +10,8 @@
 		'webkitAnimationEnd',
 		'animationend'
 	];
-	const isAnim = false;
-	const current = 0;
 
+	pageView.isAnim = false;
 	pageView.currentPage = null;
 
 	function setTransitions(location) {
@@ -47,11 +46,11 @@
 
 
 	function linkClicked(location, target) {
-		// if(isAnim) {
-		// 	return false;
-		// }
+		if(pageView.isAnim) {
+			return false;
+		}
 
-		// isAnim = true;
+		pageView.isAnim = true;
 
 		if (checkMobile()) location = 'mobile';
 		const animations = setTransitions(location);
@@ -59,16 +58,54 @@
 
 		console.log(`Link Target = ${target} || Link Location = ${location} || Link Animation = ${animations}`);
 
-		// if(nextPage.length === 0) {
-		// 	return false;
-		// }
-
-		// applyAnimations(nextPage, animations);
+		applyAnimations(nextPage, animations);
 	}
+
+	function resetClasses(next, current, classes) {
+		isAnim = false;
+		current.attr('class', classes[0]).removeClass('current-page');
+		next.attr('class', classes[1]).addClass('current-page');
+	}
+
+	function setCurrentPage(page) {
+		$('section[role="page"]').removeClass('current-page');
+		page.addClass('current-page');
+	}
+
+	function findCurrent() {
+
+		let current= $('#current-page').text();
+		return $(`#${current}`);
+	};
+
+	function applyAnimations(nextPage, animations) {
+		const classOut = animations[0];
+		const classIn = animations[1];
+		const currentPage = pageView.currentPage;
+
+		let originalClasses = [
+			currentPage.attr('class'),
+			nextPage.attr( 'class' )
+		];
+
+		setCurrentPage(currentPage);
+
+		currentPage.addClass(classOut);
+		nextPage.removeClass('hidden');
+		nextPage.addClass(classIn);
+
+		for(let i = 0, len = prefix.length; i < len; i++) {
+			$(document).on(prefix[i], function() {
+				$(document).off(prefix[i]);
+				resetClasses(nextPage, currentPage, originalClasses);
+			});
+		}
+	}
+
 
     pageView.init = () => {
 		
-		pageView.currentPage = $('#current-page').text();
+		pageView.currentPage = findCurrent();
 		let linkTarget = null;
 		let linkLoc = null;
 		let linkTargetId = null;
