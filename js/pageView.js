@@ -16,46 +16,35 @@
 	pageView.currentPage = null;
 
 	function setTransitions(location) {
-		let transition = null;
+		let classOut = '';
+		let classIn = '';
 
 		switch(location) {
 			case 'top-nav':
-				transition = 'slide-from-top';
+				classOut = 'slide-to-bottom';
+				classIn = 'slide-from-top';
 				break;
 			case 'left-nav':
-				transition = 'slide-from-left';
+				classOut = 'slide-to-right';
+				classIn = 'slide-from-left';
 				break;
 			case 'right-nav':
-				transition = 'slide-from-right';
+				classOut = 'slide-to-left';
+				classIn = 'slide-from-right';
 				break;
 			case 'bot-nav':
-				transition = 'slide-from-bottom';
+				classOut = 'slide-to-top';
+				classIn = 'slide-from-bottom';
+				break;
+			case 'mobile':
+				classOut = 'slide-to-top';
+				classIn = 'slide-from-bottom';
 				break;
 		}
 
-		return transition;
+		return [classOut, classIn];
 	}
 
-	function setPageId(string) {
-		let id = null;
-
-		switch(string) {
-			case 'top-nav':
-				transition = 'About';
-				break;
-			case 'left-nav':
-				transition = 'slide-from-left';
-				break;
-			case 'right-nav':
-				transition = 'slide-from-right';
-				break;
-			case 'bot-nav':
-				transition = 'slide-from-bottom';
-				break;
-		}
-
-		return id;
-	}
 
 	function linkClicked(location, target) {
 		// if(isAnim) {
@@ -64,6 +53,7 @@
 
 		// isAnim = true;
 
+		if (checkMobile()) location = 'mobile';
 		const animations = setTransitions(location);
 		const nextPage = $(`#${target}`);
 
@@ -82,6 +72,7 @@
 		let linkTarget = null;
 		let linkLoc = null;
 		let linkTargetId = null;
+
 		links.on('click', function(e) {
 			const linkLoc = e.currentTarget.offsetParent.id;
 			const linkTargetId = e.currentTarget.offsetParent.attributes.target.value;
@@ -97,6 +88,10 @@
 	// transition
 	// set current page
 	// change link text + aria label
+
+	function checkMobile() {
+		return window.screen.availWidth < 650 ? true : false;
+	};
 
     module.pageView = pageView;
 
