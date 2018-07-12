@@ -5,86 +5,155 @@
     const pageView = {};
 
     const pages = $('div[role="page"]');
-	const links = $('.nav > h2');
+	const links = $('.nav');
 	const prefix = [
 		'webkitAnimationEnd',
 		'animationend'
 	];
-	const isAnim = false;
-	const current = 0;
 
+	pageView.isAnim = false;
 	pageView.currentPage = null;
 
 	function setTransitions(location) {
-		let transition = null;
+		let classOut = '';
+		let classIn = '';
 
 		switch(location) {
 			case 'top-nav':
-				transition = 'slide-from-top';
+				classOut = 'slide-to-bottom';
+				classIn = 'slide-from-top';
 				break;
 			case 'left-nav':
-				transition = 'slide-from-left';
+				classOut = 'slide-to-right';
+				classIn = 'slide-from-left';
 				break;
 			case 'right-nav':
-				transition = 'slide-from-right';
+				classOut = 'slide-to-left';
+				classIn = 'slide-from-right';
 				break;
 			case 'bot-nav':
-				transition = 'slide-from-bottom';
+				classOut = 'slide-to-top';
+				classIn = 'slide-from-bottom';
+				break;
+			case 'mobile':
+				classOut = 'slide-to-left';
+				classIn = 'slide-from-right	';
 				break;
 		}
 
-		return transition;
+		return [classOut, classIn];
 	}
 
-	function setPageId(string) {
-		let id = null;
+	function handleLinks(nextPage) {
+		const landlisteningLink = {
+			h2: 'Landlistening',
+			target: 'landlistening',
+			aria: 'About Landlistening'
+		};
 
-		switch(string) {
-			case 'top-nav':
-				transition = 'About';
-				break;
-			case 'left-nav':
-				transition = 'slide-from-left';
-				break;
-			case 'right-nav':
-				transition = 'slide-from-right';
-				break;
-			case 'bot-nav':
-				transition = 'slide-from-bottom';
-				break;
+		const aboutLink = {
+			h2: 'About Sarah',
+			target: 'about',
+			aria: 'About Sarah'
+		};
+
+		const testimonialsLink = {
+			h2: 'Testimonials',
+			target: 'testimonials',
+			aria: 'Testimonals'
+		};
+
+		const contactLink = {
+			h2: 'Contact',
+			target: 'contact',
+			aria: 'Contact Info'
+		};
+
+		let nav = {};
+		nav.landlistening = ['empty', aboutLink, testimonialsLink, contactLink];
+		nav.about = ['empty', testimonialsLink, landlisteningLink, contactLink];
+		nav.testimonials = ['empty', landlisteningLink, aboutLink, contactLink];
+		nav.contact = [landlisteningLink, null, null, 'empty'];
+
+		renderLinks(links, nav[`${$(nextPage)[0].id}`]);
+	}
+
+	function renderLinks(links, array){
+		for (let i = 0; i < array.length; i++) { 
+			if (!array[i]) continue;
+			if (array[i] === 'empty') {
+				$(links[i]).addClass('hidden');
+				continue;
+			}
+			$(links[i]).removeClass('hidden')
+					.empty()
+					.append(`<h2>${array[i].h2}</h2>`)
+					.attr(`target`, array[i].target)
+					.attr(`aria-label`, array[i].aria);
 		}
-
-		return id;
 	}
 
 	function linkClicked(location, target) {
-		// if(isAnim) {
-		// 	return false;
-		// }
+		if(pageView.isAnim) {
+			return false;
+		}
 
-		// isAnim = true;
+		pageView.isAnim = true;
 
+		if (checkMobile()) location = 'mobile';
 		const animations = setTransitions(location);
 		const nextPage = $(`#${target}`);
 
 		console.log(`Link Target = ${target} || Link Location = ${location} || Link Animation = ${animations}`);
 
-		// if(nextPage.length === 0) {
-		// 	return false;
-		// }
+		applyAnimations(nextPage, animations);
+	}
 
-		// applyAnimations(nextPage, animations);
+	function resetClasses(next, current, classes) {
+		pageView.isAnim = false;
+		current.attr('class', classes[0]).removeClass('current-page');
+		next.attr('class', classes[1]).addClass('current-page');
+	}
+
+	function setCurrentPage(page) {
+		$('section[role="page"]').removeClass('current-page');
+		page.addClass('current-page');
+	}
+
+	function applyAnimations(nextPage, animations) {
+		const classOut = animations[0];
+		const classIn = animations[1];
+		const currentPage = pageView.currentPage;
+
+		setCurrentPage(currentPage);
+		if(!checkMobile()) handleLinks(nextPage);
+
+		let originalClasses = [
+			currentPage.attr('class'),
+			nextPage.attr( 'class' )
+		];
+
+		currentPage.addClass(classOut);
+		nextPage.addClass('next-page').addClass(classIn);
+
+		for(let i = 0, len = prefix.length; i < len; i++) {
+			$(document).on(prefix[i], function() {
+				$(document).off(prefix[i]);
+				resetClasses(nextPage, currentPage, originalClasses);
+			});
+		};
 	}
 
     pageView.init = () => {
 		
-		pageView.currentPage = $('#current-page').text();
 		let linkTarget = null;
 		let linkLoc = null;
 		let linkTargetId = null;
+
 		links.on('click', function(e) {
-			const linkLoc = e.currentTarget.offsetParent.id;
-			const linkTargetId = e.currentTarget.offsetParent.attributes.target.value;
+			pageView.currentPage = $('.current-page');
+			const linkLoc = e.currentTarget.id;
+			const linkTargetId = e.currentTarget.attributes.target.value;
 
 			linkClicked(linkLoc, linkTargetId);
 		})
@@ -97,6 +166,10 @@
 	// transition
 	// set current page
 	// change link text + aria label
+
+	function checkMobile() {
+		return window.screen.availWidth < 700 ? true : false;
+	};
 
     module.pageView = pageView;
 

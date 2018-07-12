@@ -1,5 +1,46 @@
 /* responsive */
-@media screen and (max-width: 900px) { 
+
+@media screen and (max-width: 700px) { 
+
+    nav {
+        height: fit-content;
+    }
+
+    .bot-button, .side-button {
+        width: 15em;
+        display: inline-block;
+        position: relative;
+        text-align: center !important;
+    }
+
+    .side-button {
+        height: 3em;
+        margin-left: calc((100% - 15em) / 2 );
+    }
+    
+    #pen {
+        margin: 0;
+        width: 100%;
+    }
+        
+    .gutter {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 700px) { 
+
+    h2 {
+        font-size: .9em;
+    }
+
+    .side-button{
+        width: 20vw;
+    }
+
+    .bot-button{
+        width: 25vw;
+    }
 
     .gutter {
         display: none;
@@ -9,30 +50,50 @@
         margin: 0;
         width: 100%;
     }
+    
 }
 
-@media screen and (max-width: 650px) { 
+@media screen and (min-width: 1000px) { 
 
-    nav {
-        height: fit-content;
+    h2 {
+        font-size: .9em;
     }
-
-    .bot-button, .side-button {
-        display: inline-block;
-        position: relative;
-        text-align: center !important;
-    }
-
-    .side-button {
-        width: 15em;
-        height: 3em;
-        margin-left: calc((100% - 15em) / 2 );
-    }
-}
-
-@media screen and (min-width: 1200px) { 
 
     .side-button{
-        width: 10%;
+        width: 15vw;
+    }
+
+    .bot-button{
+        width: 18vw;
+    }
+}
+
+@media screen and (min-width: 1300px) { 
+
+    h2 {
+        font-size: 1em;
+    }
+
+    .side-button{
+        width: 13vw;
+    }
+
+    .bot-button{
+        width: 15vw;
+    }
+}
+
+@media screen and (min-width: 1700px) { 
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    .side-button{
+        width: 10vw;
+    }
+
+    .bot-button{
+        width: 15vw;
     }
 }

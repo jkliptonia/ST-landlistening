@@ -6,8 +6,8 @@
 
     mobileView.init = () => {
 
-        if (window.screen.availWidth < 650) hamburgerize();
-        if (window.screen.availWidth > 650) deHamburgerize(); 
+        if (window.screen.availWidth < 700) hamburgerize();
+        if (window.screen.availWidth > 700) deHamburgerize(); 
 
     };
 

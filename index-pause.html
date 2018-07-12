@@ -9,31 +9,31 @@
 	<link rel="stylesheet" type="text/css" href='css/components.css'>
 	<link rel="stylesheet" type="text/css" href='css/base.css'>
 	<link rel="stylesheet" type="text/css" href='css/responsive.css'>
-	<link rel="stylesheet" type="text/css" href='css/animations.css'>
 
 </head>
 <body>
 	<nav>
-		<!-- Notes: Menu is hidden on desktop view, 
-		links set for "Landing Page" and dynamically changed in pageView.js on navigation.  
-		If updating, please leave set for "Landing Page" and set "Target" attribute to 
-		the EXACT id of the destination section as seen in the "main" portion of the HTML. -->
 		<div class="menu bot-button hidden" aria-label="Mobile Menu"> <h2> Menu </h2></div>
-		<div id="top-nav" class="nav bot-button hidden"></div>
-		<div id="left-nav" class="nav side-button" target="about" aria-label="About Sarah"><h2> About Sarah </h2></div>
-		<div id="right-nav" class="nav side-button" target="testimonials" aria-label="Testimonials"><h2>Testimonials</h2></div>
-		<div id="bot-nav" class="nav bot-button" target="contact" aria-label="Contact" ><h2> Contact </h2></div>
+		<div class="nav side-button left" aria-label="About Sarah">
+			 <h2> About Sarah </h2>
+		</div>
+		<div class="nav side-button right" aria-label="Past Work"><h2> Past Work </h2></div>
+		<div class="nav bot-button" aria-label="Contact"><h2> Contact </h2></div>
 	</nav>
 	<main>
-		<div id="left" class="gutter"></div>
+		<div id="left" class="gutter"></section>
 		<section id="pen">
 
 			<section id="landlistening" role="page" class="current-page">
 				 Landlistening 
+				 <button role="transition" class="to-about"
+					data-to="page-2" 
+					data-transition="horizontal">
+		 		</button>
 			</section>
-			<section id="about" role="page" class=""> About </section>
-			<section id="testimonials" role="page" class=""> Testimonials </section>
-			<section id="contact" role="page" class=""> Contact </section>
+			<section id="about" role="page" class="hidden"> About </section>
+			<section id="examples" role="page" class="hidden"> Examples </section>
+			<section id="contact" role="page" class="hidden"> Contact </section>
 
 		</section>
 		<div id="right" class="gutter"></section>
@@ -72,9 +72,8 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		window.module = {};
-		</script>
-	<script src="js/pageView.js" type="text/javascript"></script>
-	<script src="js/mobileView.js" type="text/javascript"></script>
+	</script>
+	<script src="js/mobile.js" type="text/javascript"></script>
 	<script src="js/app.js" type="text/javascript"></script>
 </body>
 </html>
